@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0e2037;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .scroll-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-section {
+            height: 100vh; /* Full viewport height for each section */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 0 20px;
+            z-index: 3; /* Ensure text stays above images */
+        }
+
+        .image-container {
+            position: fixed; /* Images stay fixed to the left */
+            top: 0;
+            left: 0; /* Align to the left */
+            width: 75%; /* Cover half the viewport width */
+            height: 100%;
+            z-index: 1; /* Images stay behind text */
+            opacity: 0; /* Start invisible */
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none; /* Ensure text is clickable */
+        }
+
+        .scroll-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-container.visible {
+            opacity: 1; /* Make the visible image fully opaque */
+        }
+
+        .scroll-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 10px;
+        }
+
+        .scroll-section p {
+            font-size: 1rem;
+            max-width: 600px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .text-container {
+            position: relative;
+            width: 25%; /* Center the text on the right half of the screen */
+            margin-left: auto; /* Push to the right */
+            z-index: 3; /* Ensure it stays above the image */
+        }
+
+        /* Top Section */
+        .top-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a2947;
+            padding: 0 20px;
+            text-align: center;
+            position: relative;
+            z-index: 4; /* Ensure it stays above the images */
+        }
+
+        .top-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .top-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a2947;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .bottom-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .bottom-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+
+
+
+
+
+<body>
+    <!-- Top Section -->
+    <div class="top-section">
+        <h1>Start</h1>
+        <p>
+            Martinair Flight 138 was a charter flight of Martinair from Surabaya to Jeddah with stopover in Colombo. On 4 December 1974, the Douglas DC-8 operating the flight crashed into a mountain shortly before landing, killing all 191 people aboard – 182 passengers, all of whom were Indonesian Hajj pilgrims, and nine crew members.
+        </p>
+    </div>
+
+   
+
+    <!-- Scrollable Sections -->
+    <div class="scroll-container">
+        <!-- Image Containers -->
+        <div class="image-container visible">
+            <img src="image-1.jpg" class="scroll-image" alt="Step 1">
+        </div>
+        <div class="image-container">
+            <img src="image-2.jpg" class="scroll-image" alt="Step 2">
+        </div>
+        <div class="image-container">
+            <img src="image-3.jpg" class="scroll-image" alt="Step 3">
+        </div>
+        <div class="image-container">
+            <img src="image-4.jpg" class="scroll-image" alt="Step 4">
+        </div>
+
+        
+
+        <!-- Text Sections -->
+        <div class="scroll-section">
+            <div class="text-container">
+                <h2>Step 1: </h2>
+                <p>Text</p>
+            </div>
+        </div>
+        <div class="scroll-section">
+            <div class="text-container">
+                <h2>Step 2: </h2>
+                <p>Text</p>
+            </div>
+        </div>
+        <div class="scroll-section">
+            <div class="text-container">
+                <h2>Step 3: </h2>
+                <p>Text</p>
+            </div>
+        </div>
+        <div class="scroll-section">
+            <div class="text-container">
+                <h2>Step 4: s</h2>
+                <p>Text</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+        <h1>Location</h1>
+        <p>
+            The aircraft crashed on the fifth mountain of Saptha Kanya mountain range at Therberton estate, Maskeliya, Sri Lanka. It crashed at around 40 nautical miles from Bandaranaike International Airport, Katunayake.
+        </p>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        const imageContainers = document.querySelectorAll(".image-container");
+        const sections = document.querySelectorAll(".scroll-section");
+
+        window.addEventListener("scroll", () => {
+            let currentSectionIndex = Math.round(window.scrollY / window.innerHeight);
+
+            imageContainers.forEach((container, index) => {
+                if (index === currentSectionIndex) {
+                    container.classList.add("visible");
+                } else {
+                    container.classList.remove("visible");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
